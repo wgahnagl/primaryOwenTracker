@@ -8,12 +8,9 @@
       <link rel = "stylesheet" href = "/static/css/styles.css">
       <script scr = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/bootstrap.min.js"></script>
    </head>
-   <body>
-      {% block body %}
-      {% endblock %}
-   </body>
-
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+    <body>
+{% block nav %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -71,6 +68,13 @@
                 </ul>
             </div>
         </div>
-</nav>
+    </nav>
+{% endblock %}
+<body>
+   <body>
+      {% block body %}
+      {% endblock %}
+   </body>
+    
 </html>
 
