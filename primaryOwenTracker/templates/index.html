@@ -1,7 +1,28 @@
-{% extends "base.html" %}
+s{% extends "base.html" %}
 {% block body %}
 
+
 <div class = "container">
+                {% if config['PLUG_SUPPORT'] and loop.index0 == 0 %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug" style="color: #000000">
+                            Advertisements by CSH: Plug
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="plug-body">
+                            <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug">
+                                <img style="width: 100%" src="https://plug.csh.rit.edu/data"
+                                     alt="Advertisements by CSH: Plug">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+{% endif %}
+
+
+    
 <h1><center> OWEN MILLER IS THE PRIMARY OWEN</h1>
 
 <p><center> for beaning owen Sullivan in the head so hard with a pillow that he died.</p>
