@@ -1,3 +1,5 @@
 Flask
 gunicorn
 csh_ldap
+Flask-SQLAlchemy
+SQLAlchemy
