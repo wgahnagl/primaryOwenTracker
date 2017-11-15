@@ -33,8 +33,12 @@ def add_owen():
       owen_data = data['owen']
       victory_data = data['victory']
       new_owen = Owen(time=datetime.now(), owen=owen_data, victory=victory_data  )
-
       
+      db.session.add(new_owen)
+      db.session.flush()
+      db.session.commit()
+
+      return return_json(new_quote)
 
 
 if __name__ == "__main__":
