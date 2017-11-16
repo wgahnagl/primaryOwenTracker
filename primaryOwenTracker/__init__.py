@@ -4,7 +4,7 @@ import csh_ldap
 import json
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
-import requests
+#import requests
 """TODO: you need to get the submission page working fully, pushing things to the put request, and then build the database. 
 after that you need to get ldap working, and have the submission page be a dropdown menu with all CSHers with a search """
 
@@ -29,7 +29,7 @@ def submission():
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
-   data = json.loads(request.data.decode('utf-8'))
+   data = json.loads(requests.data.decode('utf-8'))
    if data['owen'] and data['victory']:
       owen_data = data['owen']
       victory_data = data['victory']
