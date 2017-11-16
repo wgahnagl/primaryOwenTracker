@@ -5,7 +5,7 @@ import json
 import requests
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
-#import requests
+import requests
 """TODO: you need to get the submission page working fully, pushing things to the put request, and then build the database. 
 after that you need to get ldap working, and have the submission page be a dropdown menu with all CSHers with a search """
 

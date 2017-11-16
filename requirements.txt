@@ -3,5 +3,5 @@ gunicorn
 csh_ldap
 Flask-SQLAlchemy
 Flask
-Requests
+requests
 SQLAlchemy
