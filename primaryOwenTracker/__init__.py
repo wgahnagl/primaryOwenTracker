@@ -30,7 +30,7 @@ def submission():
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
-   data = json.loads(requests.data.decode('utf-8'))
+   data = json.loads(request.data.decode('utf-8'))
    if data['owen'] and data['victory']:
       owen_data = data['owen']
       victory_data = data['victory']
