@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 import csh_ldap
 import json
+import requests
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
 #import requests
@@ -33,14 +34,11 @@ def add_owen():
    if data['owen'] and data['victory']:
       owen_data = data['owen']
       victory_data = data['victory']
-      new_owen = Owen(time=datetime.now(), owen=owen_data, victory=victory_data  )
-      
+      new_owen = Owen(time=datetime.now(), owen=owen_data, victory=victory_data)    
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
-
       return return_json(new_quote)
-
 
 if __name__ == "__main__":
     app.run()
