@@ -30,6 +30,11 @@ def main():
 def submission():
    return render_template('submission.html')
 
+@app.route("/get_from_database", methods=['GET'])
+def all_owens():
+    owens = Owen.query.all()
+    return jsonify(parse_as_json(owens))
+
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
@@ -48,11 +53,17 @@ def add_owen():
 
 def return_json(owen):
     return {
-        'id': owen.id,
         'username': owen.username,
         'time': owen.time,
         'victory': owen.victory,
     }
+
+def parse_as_json(owens, owen_json=None):
+    if owen_json is None:
+        owen_json = []
+    for owen in owens:
+        owen_json.append(return_json(owens))
+    return owen_json
 
 
 if __name__ == "__main__":
