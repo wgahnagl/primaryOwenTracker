@@ -12,6 +12,7 @@ after that you need to get ldap working, and have the submission page be a dropd
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
+db.create_all()
 
 
 class master(db.Model):
