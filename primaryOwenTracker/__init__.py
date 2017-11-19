@@ -32,7 +32,7 @@ def submission():
 
 @app.route("/get_from_database", methods=['GET'])
 def all_owens():
-    owens = Owen.query.all()
+    owens = master.query.all()
     return jsonify(parse_as_json(owens))
 
 
