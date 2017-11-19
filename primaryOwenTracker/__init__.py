@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 import csh_ldap
@@ -6,8 +7,6 @@ import requests
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
 import requests
-"""TODO: you need to get the submission page working fully, pushing things to the put request, and then build the database. 
-after that you need to get ldap working, and have the submission page be a dropdown menu with all CSHers with a search """
 
 
 app = Flask(__name__)
@@ -28,8 +27,6 @@ class master(db.Model):
 @app.route("/")
 def main():
    return render_template('index.html')
-   
-
 
 @app.route("/submission")
 def submission():
@@ -37,6 +34,7 @@ def submission():
 
 @app.route("/get_from_database", methods=['GET'])
 def all_owens():
+    db.create_all()
     owens = master.query.all()
     return jsonify(parse_as_json(owens))
 
