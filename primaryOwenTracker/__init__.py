@@ -30,16 +30,17 @@ def main():
 def submission():
    return render_template('submission.html')
 
+
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
-   db.drop_all()
    db.create_all()
     
    data = json.loads(request.data.decode('utf-8'))
    if data['username'] and data['victory']:
       owen_data = data['username']
       victory_data = data['victory']
-      new_owen = master(time=datetime.now(), username=owen_data, victory=victory_data)    
+      new_owen = master(time=datetime.now(), username=owen_data, victory=victory_data)
+      
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
