@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 class Owen(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
-    owen = db.Column(db.String(50))
+    username = db.Column(db.String(50))
     victory = db.Column(db.String(2000))
 
 @app.route("/")
@@ -31,10 +31,10 @@ def submission():
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
    data = json.loads(request.data.decode('utf-8'))
-   if data['owen'] and data['victory']:
-      owen_data = data['owen']
+   if data['username'] and data['victory']:
+      owen_data = data['username']
       victory_data = data['victory']
-      new_owen = Owen(time=datetime.now(), owen=owen_data, victory=victory_data)    
+      new_owen = Owen(time=datetime.now(), username=owen_data, victory=victory_data)    
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
