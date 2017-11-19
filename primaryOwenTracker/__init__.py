@@ -12,7 +12,6 @@ after that you need to get ldap working, and have the submission page be a dropd
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-db.create_all()
 
 
 class master(db.Model):
@@ -24,7 +23,7 @@ class master(db.Model):
 @app.route("/")
 def main():
    return render_template('index.html')
-   db.create_all()
+   
 
 
 @app.route("/submission")
@@ -33,6 +32,8 @@ def submission():
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
+   db.create_all()
+    
    data = json.loads(request.data.decode('utf-8'))
    if data['username'] and data['victory']:
       owen_data = data['username']
