@@ -12,6 +12,9 @@ import requests
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
+requests.packages.urllib3.disable_warnings()
+
+
 
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
