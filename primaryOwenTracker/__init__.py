@@ -14,7 +14,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 
 
-class Owen(db.Model):
+class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
     username = db.Column(db.String(50))
