@@ -44,7 +44,7 @@ def add_owen():
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
-      return return_json(new_owen)
+      return jsonify(return_json(new_owen))
 
 def return_json(owen):
     return {
