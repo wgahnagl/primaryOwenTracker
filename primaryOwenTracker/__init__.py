@@ -32,6 +32,7 @@ def submission():
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
+   db.drop_all()
    db.create_all()
     
    data = json.loads(request.data.decode('utf-8'))
@@ -42,7 +43,16 @@ def add_owen():
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
-      return return_json(new_quote)
+      return return_json(new_owen)
+
+def return_json(owen):
+    return {
+        'id': owen.id,
+        'username': owen.username,
+        'time': owen.time,
+        'victory': owen.victory,
+    }
+
 
 if __name__ == "__main__":
     app.run()
