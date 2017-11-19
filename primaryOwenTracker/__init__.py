@@ -1,4 +1,4 @@
-
+ls
 from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 import csh_ldap
@@ -52,7 +52,7 @@ def add_owen():
    if data['username'] and data['victory']:
       owen_data = data['username']
       victory_data = data['victory']
-      new_owen = master( username=owen_data, victory=victory_data)
+      new_owen = master( username=owen_data, time=time,  victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
