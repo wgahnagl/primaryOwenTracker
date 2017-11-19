@@ -19,6 +19,13 @@ class master(db.Model):
     time = db.Column(db.DateTime)
     username = db.Column(db.String(50))
     victory = db.Column(db.String(2000))
+    
+    def __init__ (self, time, username, victory):
+        self.time = datetime.now()
+        self.username = username
+        self.quote = quote
+        self.speaker = speaker
+    
 
 @app.route("/")
 def main():
