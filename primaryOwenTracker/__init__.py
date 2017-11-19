@@ -34,7 +34,7 @@ def add_owen():
    if data['username'] and data['victory']:
       owen_data = data['username']
       victory_data = data['victory']
-      new_owen = Owen(time=datetime.now(), username=owen_data, victory=victory_data)    
+      new_owen = master(time=datetime.now(), username=owen_data, victory=victory_data)    
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
