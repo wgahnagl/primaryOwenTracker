@@ -23,9 +23,7 @@ class master(db.Model):
     def __init__ (self, time, username, victory):
         self.time = datetime.now()
         self.username = username
-        self.quote = quote
-        self.speaker = speaker
-    
+        self.victory = victory    
 
 @app.route("/")
 def main():
