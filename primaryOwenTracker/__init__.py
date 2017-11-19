@@ -23,6 +23,8 @@ class master(db.Model):
 @app.route("/")
 def main():
    return render_template('index.html')
+   db.create_all()
+
 
 @app.route("/submission")
 def submission():
