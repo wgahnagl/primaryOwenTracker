@@ -4,6 +4,7 @@ from datetime import datetime
 import csh_ldap
 import json
 import requests
+import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
 import requests
@@ -11,6 +12,8 @@ import requests
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
+
+app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
 
 requests.packages.urllib3.disable_warnings()
 
@@ -29,6 +32,7 @@ class master(db.Model):
 
 @app.route("/")
 def main():
+   db.create_all()
    return render_template('index.html')
 
 @app.route("/", methods=['GET'])
