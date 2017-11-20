@@ -42,12 +42,14 @@ def submission():
 
 @app.route("/get_from_database", methods=['GET'])
 def all_owens():
+    db.create_all()
     owens = master.query.all()
     return jsonify(parse_as_json(owens))
 
 
 @app.route("/add_owen", methods = ['PUT'])
-def add_owen():    
+def add_owen():
+   db.create_all()
    data = json.loads(request.data.decode('utf-8'))
    if data['username'] and data['victory']:
       owen_data = data['username']
