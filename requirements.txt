@@ -5,3 +5,4 @@ Flask-SQLAlchemy
 Flask
 requests
 SQLAlchemy
+PyMySQL
