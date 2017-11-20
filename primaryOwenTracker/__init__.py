@@ -40,9 +40,8 @@ def submission():
 
 @app.route("/get_from_database", methods=['GET'])
 def all_owens():
-    owens = master.query.all()
+    owens = moderated_owens.query.all()
     return jsonify(parse_as_json(owens))
-
 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
@@ -117,7 +116,7 @@ def main():
 def submission():
    return render_template('submission.html')
 
-@app.route("/get_from_database", methods=['GET'])
+@app.route("/get_primary_owen", methods=['GET'])
 def all_owens():
     owens = master.query.all()
     return jsonify(parse_as_json(owens))
@@ -130,7 +129,7 @@ def add_owen():
       owen_data = data['username']
       time_data = data['time']
       victory_data = data['victory']
-      new_owen = master( username= owen_data, time=time_data,  victory=victory_data, id=)
+      new_owen = master( username= owen_data, time=time_data,  victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
