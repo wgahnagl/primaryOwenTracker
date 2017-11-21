@@ -36,9 +36,9 @@ def main():
 def submission():
    return render_template('submission.html')
 
-@app.route("/get_from_database", methods=['GET'])
+@app.route("/get_primary_owen", methods=['GET'])
 def all_owens():
-    owens = master.query.all()
+    owens = moderated_owens.query.all()
     return jsonify(parse_as_json(owens))
 
 @app.route("/add_owen", methods = ['PUT'])
