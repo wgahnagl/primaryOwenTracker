@@ -16,8 +16,6 @@ app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
 
 requests.packages.urllib3.disable_warnings()
 
-
-
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
@@ -50,7 +48,7 @@ def add_owen():
       owen_data = data['username']
       time_data = data['time']
       victory_data = data['victory']
-      new_owen = master( username= owen_data, time=time_data,  victory=victory_data)
+      new_owen = master(username= owen_data, time=time_data, victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
@@ -68,7 +66,7 @@ def parse_as_json(owens, owen_json=None):
     if owen_json is None:
         owen_json = []
     for owen in owens:
-        owen_json.append(return_json(owens))
+        owen_json.append(return_json(owen))
     return owen_json
 
 
