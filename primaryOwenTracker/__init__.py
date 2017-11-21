@@ -40,7 +40,7 @@ def submission():
 
 @app.route("/get_from_database", methods=['GET'])
 def all_owens():
-    owens = moderated_owens.query.all()
+    owens = master.query.all()
     return jsonify(parse_as_json(owens))
 
 @app.route("/add_owen", methods = ['PUT'])
