@@ -25,6 +25,17 @@ class master(db.Model):
     def __init__ (self, time, username, victory):
         self.time = datetime.now()
         self.username = username
+        self.victory = victory
+        
+class moderated_owens(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DateTime)
+    username = db.Column(db.String(50))
+    victory = db.Column(db.String(2000))
+    
+    def __init__ (self, time, username, victory):
+        self.time = datetime.now()
+        self.username = username
         self.victory = victory    
 
 @app.route("/")
@@ -38,7 +49,7 @@ def submission():
 
 @app.route("/get_primary_owen", methods=['GET'])
 def all_owens():
-    owens = moderated_owens.query.all()
+    owens = master.query.all()
     return jsonify(parse_as_json(owens))
 
 @app.route("/add_owen", methods = ['PUT'])
