@@ -33,12 +33,11 @@
     
     (function($){
         function processForm( e ){
-        var currentTime = String(new Date().today()) + String( new Date().timeNow());
     
         var formData = {
             'username'              : $('input[name=username]').val(),
             'victory'               : $('input[name=victory]').val(),
-            'time'                  : currentTime,
+            'time'                  : "00:00",
         };
     
             $.ajax({
