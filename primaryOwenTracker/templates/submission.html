@@ -77,13 +77,16 @@
                 dataType: 'json',
                 contentType: 'application/json',
                 data:JSON.stringify(formData)
+
+                success: function(data){
+                    Window.reload()
+                    }
     
             });
             e.preventDefault();
     
         }
         $('#put_owen').submit( processForm );
-        window.location.reload(); 
     })(jQuery);
 </script>
         <p>
