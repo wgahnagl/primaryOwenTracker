@@ -57,9 +57,8 @@ def add_owen():
    data = json.loads(request.data.decode('utf-8'))
    if data['username'] and data['victory']:
       owen_data = data['username']
-      time_data = data['time']
       victory_data = data['victory']
-      new_owen = master(username= owen_data, time=time_data, victory=victory_data)
+      new_owen = master(username= owen_data, victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
