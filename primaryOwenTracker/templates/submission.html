@@ -3,34 +3,16 @@
 {% block body %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     
-<div class = "container">
-
-        
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <ul class=alert, style="list-style: none" >
-    <a style="color :#000000">
-
-    
-        {% for category, message in messages %}
-            <script>
-                switch(category){
-                    case warning:
-                        category = warning
-                    case error:
-                        category = danger
-                    case default:
-                        category = success
-                }
-            </script>
-                    <div class="alert alert-{{ category }}" role="alert">
-                        {{ message }}   
-                    </div>
-             {% endfor %}
-    </ul>
-    </a>
-  {% endif %}
-{% endwith %}
+<div class = "container"> 
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li<{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
 
     
 <div class = "panel panel-primary">

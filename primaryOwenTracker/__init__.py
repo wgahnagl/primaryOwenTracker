@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,jsonify, flash
+from flask import Flask, render_template,request,jsonify, flash, redirect
 from datetime import datetime
 import csh_ldap
 import json
@@ -68,10 +68,11 @@ def add_owen():
       db.session.flush()
       db.session.commit()
       flash("success! your addition will be reviewed.")
-      return render_template("submission.html")
+      return redirect('index.html')
    else:
-       flash("you didn't fill in all of your fields, pal", 'error')
-       return render_template("submission.html")
+       error = "you didn't fill in all of your fields, pal", 'error'
+       
+   return render_template("submission.html", error=error)
 
 def return_json(owen):
     return {
