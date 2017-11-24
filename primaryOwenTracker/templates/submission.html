@@ -4,6 +4,29 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     
 <div class = "container">
+
+        
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=alert, style="list-style: none">
+        {% for category, message in messages %}
+            <script>
+                switch(category){
+                    case warning:
+                        category = warning
+                    case error:
+                        category = danger
+                    case default:
+                        category = success
+                }
+            </script>
+            <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+    
 <div class = "panel panel-primary">
    <div class = "panel-heading">
       <a style="color: #ffffff">
