@@ -11,6 +11,27 @@
     <link rel="manifest" href="/static/manifest.json">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=alert, style="list-style: none">
+        {% for category, message in messages %}
+            <script>
+                switch(category){
+                    case warning:
+                        category = warning
+                    case error:
+                        category = danger
+                    case default:
+                        category = success
+                }
+            </script>
+            <li class="alert alert-{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
 </head>
 
     
