@@ -12,7 +12,7 @@
    <div class = "panel-body">
     
    <form id="put_owen">
-   <form action="/add_owen" method="POST">
+   <form action="/add_owen">
           <div class = "inner-panel-body">
           <input type="text"
             name="username"
@@ -35,7 +35,7 @@
                 dataType: 'text',
                 type: 'PUT',
                 contentType: 'application/json',
-                data: JSON.stringify( { "username": $('#username').val(), "time": $('#time').val(), "victory":$('#victory').val() }),
+                data: $(this).serialize(),
                 success: function( data, textStatus, jQxhr ){
                     $('#response pre').html( data );
                 },
