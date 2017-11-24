@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,jsonify
+from flask import Flask, render_template,request,jsonify, flash
 from datetime import datetime
 import csh_ldap
 import json
@@ -59,12 +59,17 @@ def add_owen():
       owen_data = data['username']
       time_data = data['time']
       victory_data = data['victory']
-      new_owen = master(username= owen_data, time=time_data, victory=victory_data)
+      
+      new_owen = master(username=owen_data, time=time_data, victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
-      return jsonify(return_json(new_owen))
+      flash("success! your addition will be reviewed.")
+     # return jsonify(return_json(new_owen))
+      return render_template('index.html')
+   else:
+       flash("you didn't fill in all of your fields, pal")
 
 def return_json(owen):
     return {
