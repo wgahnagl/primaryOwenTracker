@@ -30,12 +30,20 @@
     
     (function($){
         function processForm( e ){
+        var formData = {
+            'username'              : $('input[name=username]').val(),
+            'victory'             : $('input[name=victory]').val(),
+        };
+
+    
             $.ajax({
                 url: '/add_owen',
-                dataType: 'text',
+                dataType: 'json',
                 type: 'PUT',
                 contentType: 'application/raw',
-                data: $(this).serialize()
+                data: formData
+                encode : true,
+    
                 success: function( data, textStatus, jQxhr ){
                     $('#response pre').html( data );
                 },
