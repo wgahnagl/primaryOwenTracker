@@ -33,6 +33,8 @@
     
     (function($){
         function processForm( e ){
+
+        var today =  new Date(Date.now()).toLocaleString()
     
         var formData = {
             'username'              : $('input[name=username]').val(),
@@ -57,7 +59,9 @@
          <center>
         </p>
          </a>
+    
       </div>
-   </div>
+   </div>        var currentTime = String(new Date().today()) + String( new Date().timeNow());
+
 </div>
 {% endblock %}
