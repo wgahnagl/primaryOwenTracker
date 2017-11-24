@@ -68,7 +68,7 @@ def add_owen():
       db.session.flush()
       db.session.commit()
       flash("success! your addition will be reviewed.")
-      return jsonify(return_json(new_quote))
+      return jsonify(return_json(new_owen))
    else:
        flash("you didn't fill in all of your fields, pal")
        return "error, fields weren't full"
