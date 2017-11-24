@@ -34,8 +34,8 @@
                 url: '/add_owen',
                 dataType: 'text',
                 type: 'PUT',
-                contentType: 'application/json',
-                data: $(this).serialize(),
+                contentType: 'application/raw',
+                data: $(this).serialize()
                 success: function( data, textStatus, jQxhr ){
                     $('#response pre').html( data );
                 },
