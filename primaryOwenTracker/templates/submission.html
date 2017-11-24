@@ -34,12 +34,12 @@
     (function($){
         function processForm( e ){
 
-        var today =  new Date(Date.now()).toLocaleString()
+        var today =  new Date(Date.now()).toLocaleString();
     
         var formData = {
             'username'              : $('input[name=username]').val(),
             'victory'               : $('input[name=victory]').val(),
-            'time'                  : "00:00",
+            'time'                  : String(today),
         };
     
             $.ajax({
@@ -61,7 +61,7 @@
          </a>
     
       </div>
-   </div>        var currentTime = String(new Date().today()) + String( new Date().timeNow());
+   </div>  
 
 </div>
 {% endblock %}
