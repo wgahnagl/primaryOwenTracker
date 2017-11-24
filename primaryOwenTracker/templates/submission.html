@@ -32,11 +32,15 @@
     
     (function($){
         function processForm( e ){
+
+        var currentTime = new Date().today() + new Date().timeNow() + "";
     
         var formData = {
             'username'              : $('input[name=username]').val(),
             'victory'               : $('input[name=victory]').val(),
+            'time'                  : $(currentTime)
         };
+
 
     
             $.ajax({
@@ -54,12 +58,6 @@
         $('#put_owen').submit( processForm );
     })(jQuery);
 </script>
-
-
-
-
-
-    
          <p>
          <center>
         </p>
