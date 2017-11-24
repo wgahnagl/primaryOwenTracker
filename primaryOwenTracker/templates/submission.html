@@ -1,6 +1,7 @@
 {% extends "base.html"%}
 {% block body %}
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
 <div class = "container">
 <div class = "panel panel-primary">
    <div class = "panel-heading">
@@ -10,7 +11,7 @@
    </div>
    <div class = "panel-body">
     
-   <form action="/add_owen" method="PUT">
+   <form id="put_owen" action="/add_owen" method="PUT">
           <div class = "inner-panel-body">
           <input type="text"
             name="username"
@@ -23,6 +24,37 @@
           <input type="submit"
                 value = "Submit">
   </form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    
+    (function($){
+        function processForm( e ){
+            $.ajax({
+                url: '/add_owen',
+                dataType: 'text',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify( { "username": $('#username').val(), "time": $('#time').val(), "victory":$('#victory').val() }),
+                success: function( data, textStatus, jQxhr ){
+                    $('#response pre').html( data );
+                },
+                error: function( jqXhr, textStatus, errorThrown ){
+                    console.log( errorThrown );
+                }
+            });
+
+            e.preventDefault();
+        }
+
+        $('#put_owen').submit( processForm );
+    })(jQuery);
+</script>
+
+
+
+
+
+    
          <p>
          <center>
         </p>
