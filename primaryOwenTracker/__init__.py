@@ -71,6 +71,7 @@ def add_owen():
       return jsonify(return_json(new_owen))
    else:
        flash("you didn't fill in all of your fields, pal")
+       return "failed"
 
 def return_json(owen):
     return {
