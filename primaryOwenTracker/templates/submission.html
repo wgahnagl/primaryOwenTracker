@@ -14,21 +14,25 @@
    <form id="put_owen">
           <div class = "inner-panel-body">
           <input type="text"
+            id="username"
             name="username"
             placeholder="username of owen">
           <br>
           <input type="text"
+            id="victory"
             name="victory"
             placeholder="describe the victory">
           <br>
           <input type="submit"
                 value = "Submit">
   </form>
+    
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
     
     (function($){
         function processForm( e ){
+    
         var formData = {
             'username'              : $('input[name=username]').val(),
             'victory'             : $('input[name=victory]').val(),
@@ -39,12 +43,11 @@
                 url: '/add_owen',
                 dataType: 'json',
                 type: 'PUT',
-                contentType: 'application/raw',
                 data: formData
                 encode : true,
     
                 success: function( data, textStatus, jQxhr ){
-                    $('#response pre').html( data );
+                    console.log( data );
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
