@@ -1,3 +1,4 @@
+
 {% extends "base.html"%}
 {% block body %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -32,15 +33,11 @@
     
     (function($){
         function processForm( e ){
-
-        var currentTime = new Date().today() + new Date().timeNow() + "";
     
         var formData = {
             'username'              : $('input[name=username]').val(),
             'victory'               : $('input[name=victory]').val(),
         };
-
-
     
             $.ajax({
                 type:'PUT',
@@ -50,13 +47,17 @@
                 data:JSON.stringify(formData)
     
             });
-
             e.preventDefault();
         }
-
         $('#put_owen').submit( processForm );
     })(jQuery);
 </script>
+
+
+
+
+
+    
          <p>
          <center>
         </p>
