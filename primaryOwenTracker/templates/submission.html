@@ -40,18 +40,11 @@
 
     
             $.ajax({
-                url: '/add_owen',
-                dataType: 'json',
-                method: PUT,
+                type:"PUT",
+                url: /add_owen,
+                contentType: "application/json",
                 data: formData
-                encode : true,
     
-                success: function( data, textStatus, jQxhr ){
-                    console.log( data );
-                },
-                error: function( jqXhr, textStatus, errorThrown ){
-                    console.log( errorThrown );
-                }
             });
 
             e.preventDefault();
