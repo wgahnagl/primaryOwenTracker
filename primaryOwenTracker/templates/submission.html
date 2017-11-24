@@ -21,7 +21,10 @@
                 }
             </script>
             <li class="alert alert-{{ category }}">{{ message }}</li>
-        {% endfor %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ message }}   
+                    </div>
+             {% endfor %}
     </ul>
   {% endif %}
 {% endwith %}
