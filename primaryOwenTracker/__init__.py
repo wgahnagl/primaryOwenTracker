@@ -16,6 +16,8 @@ app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
 
 requests.packages.urllib3.disable_warnings()
 
+app.secret_key = 'shh, dont tell anyone'
+
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
