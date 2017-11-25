@@ -17,7 +17,7 @@
 $(document).ready(function(){
 
     $.get("/current_owen", function(data){
-        $("#current_owen").text(data.username);
+        $("#current_owen").text(data.username + "IS THE PRIMARY OWEN");
         $("#current_victory").text(data.victory);
         $("#owen_image").attr("src","https://profiles.csh.rit.edu/image/"+data.username)
     
