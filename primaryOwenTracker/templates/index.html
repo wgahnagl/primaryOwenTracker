@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class = "container">
 <div class = "panel panel-primary">
    <div class = "panel-heading">
@@ -11,7 +12,22 @@
     
    <div class = "panel-body">
    <div class = "col col-lg-2">
-    <img src="https://profiles.csh.rit.edu/image/owen" alt="Mountain View">
+    
+<script>
+$(document).ready(function(){
+
+    $.get("/current_owen", function(data){
+        $("#current_owen").text(data.username);
+        $("#current_victory").text(data.victory);
+        $("#owen_image").attr("src","https://profiles.csh.rit.edu/image/"+data.username)
+    
+    });
+    });
+
+</script>
+
+    
+    <img alt="Mountain View" id="owen_image">
    </div>
     
       <center>
@@ -19,11 +35,12 @@
       <div class = "col-md-auto">
          <h1>
             <center>
-            OWEN SULLIVAN IS THE PRIMARY OWEN
+            <p id="current_owen"></p>
+            </center>
          </h1>
-         <p>
          <center>
-         for whooping Owen Miller's ass so hard in bowling that he completely disintegrated in bowl-a-roll</p>
+         <p id="current_victory"> </p>
+         </center>
          </a>
       </div>
       </div>

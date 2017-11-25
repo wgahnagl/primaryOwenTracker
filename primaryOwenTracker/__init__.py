@@ -49,11 +49,16 @@ def main():
 def submission():
    return render_template('submission.html')
 
-@app.route("/get_primary_owen", methods=['GET'])
+@app.route("/owen_history", methods=['GET'])
 def all_owens():
     owens = moderated_owens.query.all()
     return jsonify(parse_as_json(owens))
 
+@app.route("/current_owen", methods=['GET'])
+def current_owen():
+     return jsonify(return_json(moderated_owens.query.order_by(moderated_owens.id.desc()).first()))
+
+ 
 @app.route("/add_owen", methods = ['PUT'])
 def add_owen():
    data = json.loads(request.data.decode('utf-8'))
@@ -67,11 +72,11 @@ def add_owen():
       db.session.add(new_owen)
       db.session.flush()
       db.session.commit()
-      flash("success! your addition will be reviewed.")
       return jsonify(return_json(new_owen))
    else:
-       flash("you didn't fill in all of your fields, pal")
        return "error, fields weren't full"
+
+
 
 def return_json(owen):
     return {
