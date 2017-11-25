@@ -3,7 +3,8 @@
 {% block body %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     
-<div class = "container"> 
+<div class = "container">
+<div id="flash"></div>
 
 <div class = "panel panel-primary">
    <div class = "panel-heading">
@@ -48,9 +49,15 @@
                 url: '/add_owen',
                 dataType: 'json',
                 contentType: 'application/json',
-                data:JSON.stringify(formData)
-                success: processForm(e){
-                    console.log("wow!")}
+                data:JSON.stringify(formData),
+                success: function(data) {
+                         alert("submission successful!");
+                         window.location.href = "/";
+                                            },
+                error: function() {
+                          alert("error occured.");
+                                   }
+                
             });
             e.preventDefault();
     
