@@ -4,17 +4,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     
 <div class = "container"> 
-      {% with messages = get_flashed_messages() %}
-         {% if messages %}
-            <ul>
-               {% for message in messages %}
-               <li<{{ message }}</li>
-               {% endfor %}
-            </ul>
-         {% endif %}
-      {% endwith %}
 
-    
 <div class = "panel panel-primary">
    <div class = "panel-heading">
       <a style="color: #ffffff">
@@ -59,6 +49,8 @@
                 dataType: 'json',
                 contentType: 'application/json',
                 data:JSON.stringify(formData)
+                success: function(result){
+                    console.log("wow!")}
             });
             e.preventDefault();
     
