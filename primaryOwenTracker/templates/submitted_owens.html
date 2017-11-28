@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="container">
+{% for owen in submitted_owens %}
+      <div class="panel panel-primary">
+                <div class="panel-body">
+                   <b> {{ owen.username }}</b> - {{ owen.victory }}
+                </div>
+                <div class="panel-footer">
+                    {{ owen.time }}
+                </div>
+                
+            </div>
+{% endfor %}
+{% endblock %}
