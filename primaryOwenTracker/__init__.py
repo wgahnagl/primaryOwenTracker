@@ -49,6 +49,16 @@ def main():
 def submission():
    return render_template('submission.html')
 
+@app.route("/submitted_owens")
+def submitted_owens():
+    owens = master.query.all()
+    return render_template('submitted_owens.html', submitted_owens=owens)
+
+@app.route("/all_submitted_owens", methods=['GET'])
+def all_submitted_owens():
+    owens = master.query.all()
+    return jsonify(parse_as_json(owens))
+
 @app.route("/owen_history", methods=['GET'])
 def all_owens():
     owens = moderated_owens.query.all()
