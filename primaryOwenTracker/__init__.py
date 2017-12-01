@@ -56,7 +56,7 @@ def submitted_owens():
 
 @app.route("/all_submitted_owens", methods=['GET'])
 def all_submitted_owens():
-    owens = master.query.all()
+    owens = master.query.order_by(owens.id.desc()).all()
     return jsonify(parse_as_json(owens))
 
 @app.route("/owen_history", methods=['GET'])
