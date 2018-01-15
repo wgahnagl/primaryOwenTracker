@@ -45,7 +45,6 @@ class moderated_owens(db.Model):
         self.victory = victory    
 
 @app.route("/")
-@auth.oidc_auth
 def main():
    db.create_all()
    return render_template('index.html')
@@ -55,7 +54,6 @@ def submission():
    return render_template('submission.html')
 
 @app.route("/submitted_owens")
-@auth.oidc_auth
 def submitted_owens():
     owens = master.query.all()
     return render_template('submitted_owens.html', submitted_owens=owens)
