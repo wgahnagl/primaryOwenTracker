@@ -1,8 +1,8 @@
 Flask
 gunicorn
-csh_ldap
 Flask-SQLAlchemy
 Flask
 requests
 SQLAlchemy
 PyMySQL
+Flask-pyoidc
