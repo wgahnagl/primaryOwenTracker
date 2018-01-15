@@ -6,3 +6,4 @@ requests
 SQLAlchemy
 PyMySQL
 Flask-pyoidc
+csh_ldap
