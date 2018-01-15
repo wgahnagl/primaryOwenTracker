@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template,request,jsonify, flash, redirect
 from datetime import datetime
 import csh_ldap
@@ -15,6 +16,9 @@ db = SQLAlchemy(app)
 app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
 
 requests.packages.urllib3.disable_warnings()
+
+
+
 
 app.secret_key = 'shh, dont tell anyone'
 
@@ -41,6 +45,7 @@ class moderated_owens(db.Model):
         self.victory = victory    
 
 @app.route("/")
+@auth.oidc_auth
 def main():
    db.create_all()
    return render_template('index.html')
@@ -50,6 +55,7 @@ def submission():
    return render_template('submission.html')
 
 @app.route("/submitted_owens")
+@auth.oidc_auth
 def submitted_owens():
     owens = master.query.all()
     return render_template('submitted_owens.html', submitted_owens=owens)
