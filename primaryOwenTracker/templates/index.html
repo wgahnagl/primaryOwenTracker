@@ -20,7 +20,7 @@ $(document).ready(function(){
         $("#current_owen").text(data.username.toUpperCase() + " IS THE PRIMARY OWEN");
         $("#current_victory").text(data.victory);
         $("#owen_image").attr("src","https://profiles.csh.rit.edu/image/"+data.username)
-    
+        $("#owen_submitter").text(data.submitter.toUpperCase() + "submitted this Owen.");
     });
     });
 
@@ -38,6 +38,9 @@ $(document).ready(function(){
             <p id="current_owen"></p>
             </center>
          </h1>
+		 <center>
+		 <p id="owen_submitter"> </p>
+		 </center>
          <center>
          <p id="current_victory"> </p>
          </center>
