@@ -9,7 +9,7 @@
 <div class = "panel panel-primary">
    <div class = "panel-heading">
       <a style="color: #ffffff">
-    who do you believe the primary owen is??
+    Who do you believe the Primary Owen is??
       </a>
    </div>
    <div class = "panel-body">
@@ -17,14 +17,19 @@
    <form id="put_owen" action="/add_owen" method="POST">
           <div class = "inner-panel-body text-center">
           <input type="text" class="form-control"
+            id="submitter"
+            name="submitter"
+            placeholder="Username of submitter">
+          <br>
+          <input type="text" class="form-control"
             id="username"
             name="username"
-            placeholder="username of owen">
+            placeholder="Username of Owen">
           <br>
           <input type="text" class="form-control"
             id="victory"
             name="victory"
-            placeholder="describe the victory">
+            placeholder="Describe the victory.">
           <br>
           <input type="submit" class="form-control btn btn-defaul"
                 value = "Submit">
@@ -42,6 +47,7 @@
             'username'              : $('input[name=username]').val(),
             'victory'               : $('input[name=victory]').val(),
             'time'                  : String(today),
+			'submitter'             : $('input[name=submitter]').val(),
         };
     
             $.ajax({
@@ -51,11 +57,11 @@
                 contentType: 'application/json',
                 data:JSON.stringify(formData),
                 success: function(data) {
-                         alert("submission successful!");
+                         alert("Submission successful!");
                          window.location.href = "/";
                                             },
                 error: function() {
-                          alert("error occured.");
+                          alert("An error occured.");
                                    }
                 
             });

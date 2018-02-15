@@ -22,22 +22,26 @@ class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
     username = db.Column(db.String(50))
+    submitter = db.Column(db.String(50))
     victory = db.Column(db.String(2000))
     
-    def __init__ (self, time, username, victory):
+    def __init__ (self, time, username, submitter, victory):
         self.time = datetime.now()
         self.username = username
+        self.submitter = submitter
         self.victory = victory
         
 class moderated_owens(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime)
     username = db.Column(db.String(50))
+    submitter = db.Column(db.String(50))
     victory = db.Column(db.String(2000))
     
-    def __init__ (self, time, username, victory):
+    def __init__ (self, time, username, submitter, victory):
         self.time = datetime.now()
         self.username = username
+        self.submitter = submitter
         self.victory = victory    
 
 @app.route("/")
@@ -74,10 +78,11 @@ def add_owen():
    data = json.loads(request.data.decode('utf-8'))
    if data['username'] and data['victory']:
       owen_data = data['username']
+      submitter_data = data['submitter']
       time_data = data['time']
       victory_data = data['victory']
       
-      new_owen = master(username=owen_data, time=time_data, victory=victory_data)
+      new_owen = master(username=owen_data, submitter=submitter_data, time=time_data, victory=victory_data)
       
       db.session.add(new_owen)
       db.session.flush()
@@ -91,6 +96,7 @@ def add_owen():
 def return_json(owen):
     return {
         'username': owen.username,
+        'submitter': owen.submitter,
         'time': owen.time,
         'victory': owen.victory,
     }

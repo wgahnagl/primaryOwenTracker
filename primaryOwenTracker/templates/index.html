@@ -11,7 +11,6 @@
 
     
    <div class = "panel-body">
-   <div class = "col col-lg-2">
     
 <script>
 $(document).ready(function(){
@@ -20,17 +19,15 @@ $(document).ready(function(){
         $("#current_owen").text(data.username.toUpperCase() + " IS THE PRIMARY OWEN");
         $("#current_victory").text(data.victory);
         $("#owen_image").attr("src","https://profiles.csh.rit.edu/image/"+data.username)
-    
+        $("#owen_submitter").text(data.submitter.toUpperCase() + "submitted this Owen.");
     });
     });
 
 </script>
 
+<center> 
+    <img alt="Primary Owen Photo" id="owen_image">
     
-    <img alt="Mountain View" id="owen_image">
-   </div>
-    
-      <center>
       <div class = "winner-body">
       <div class = "col-md-auto">
          <h1>
@@ -38,6 +35,9 @@ $(document).ready(function(){
             <p id="current_owen"></p>
             </center>
          </h1>
+		 <center>
+		 <p id="owen_submitter"> </p>
+		 </center>
          <center>
          <p id="current_victory"> </p>
          </center>
@@ -49,13 +49,13 @@ $(document).ready(function(){
 
    <div class = "panel panel-primary">
       <div class = "panel-heading" style="color: #ffffff">
-           submit a change
+           Submit a Change
       </div>
       <div class = "panel-body">
         <center>
          <a href="/submission">
             <h1>
-            submit a change in the primary owen
+            Submit a change in the Primary Owen
             </h1>
          </a>
         </center>
