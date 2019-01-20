@@ -4,24 +4,23 @@ from flask import Flask, render_template, redirect, session, url_for
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-import requests
 from functools import wraps
+import csh_ldap
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
 app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
-requests.packages.urllib3.disable_warnings()
 app.secret_key = 'shh, dont tell anyone'
-
 APP_CONFIG = ProviderConfiguration(issuer=app.config["OIDC_ISSUER"],
                                    client_metadata=ClientMetadata(app.config["OIDC_CLIENT_CONFIG"]['client_id'],
                                                                   app.config["OIDC_CLIENT_CONFIG"]['client_secret']))
 auth = OIDCAuthentication({'app': APP_CONFIG}, app)
+_ldap = csh_ldap.CSHLDAP(app.config["LDAP_BIND_DN"], app.config["LDAP_BIND_PASS"])
 
 
 class Owens(db.Model):
     __tablename__ = 'Owens'
-    username = db.Column(db.String(50), primary_key=True)
+    username = db.Column(db.String(50), ForeignKey('Users.uid'), primary_key=True)
     score = db.Column(db.Integer)
     time = db.Column(db.DateTime)
 
@@ -31,19 +30,31 @@ class Owens(db.Model):
         self.timeOfOwening = time
 
 
+class Users(db.Model):
+    __tablename__ = 'Users'
+    uid = db.Column(db.String(50), primary_key=True)
+    modifier = db.Column(db.Integer, default=10)
+
+    def __init__(self, uid, modifier):
+        self.uid = uid
+        self.modifier = modifier
+
+
 class Submissions(db.Model):
-    submitter = db.Column(db.String(50))
+    submitter = db.Column(db.String(50), ForeignKey('Users.uid'))
     argument = db.Column(db.String(2000))
     suggestedPoints = db.Column(db.Integer)
     time = db.Column(db.DateTime, primary_key=True)
     owen = db.Column(db.String(50), ForeignKey('Owens.username'))
+    accepted = db.Column(db.Boolean)
 
-    def __init__(self, submitter, argument, suggestedPoints, time, owen):
+    def __init__(self, submitter, argument, suggestedpoints, time, owen, accepted):
         self.submitter = submitter
         self.argument = argument
-        self.suggestedPoints = suggestedPoints
+        self.suggestedPoints = suggestedpoints
         self.time = time
         self.owen = owen
+        self.accepted = accepted
 
 
 def before_request(func):
@@ -79,7 +90,6 @@ def index():
 @before_request
 def main(info=None):
     db.create_all()
-    print(info)
     return render_template('index.html', info=info)
 
 

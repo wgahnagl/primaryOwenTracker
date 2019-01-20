@@ -1,35 +1,28 @@
 {% extends "elements/base.html" %}
 {% block body %}
-
     <div class="container" style="padding-top: 15px">
         <div class="card mb-3">
             <h3 class="card-header">Primary Owen</h3>
             <div class="card-body">
-                Primary Owen updates, coming soon!
-            </div>
-        </div>
-        <div class="card">
-            <h3 class="card-header">
-                <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug">
-                    Advertisements by CSH: Plug
-                </a>
-            </h3>
-            <div class="card-body">
-                <div class="plug-body">
-                    <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug" style="color: #000000">
-                        <img style="width: 100%" src="https://plug.csh.rit.edu/data" alt="Advertisements by CSH: Plug">
-                    </a>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-6">
+                            <div class="ratio img-responsive img-circle"
+                                 style="background-image: url(https://profiles.csh.rit.edu/image/euler);"></div>
+                        </div>
+                        <div class="col-sm-8 col-xs-12" style="text-align: center;">
+                            F I G H T
+                        </div>
+                        <div class="col-sm-2 col-xs-6">
+                            <div class="ratio img-responsive img-circle"
+                                 style="background-image: url(https://profiles.csh.rit.edu/image/owen);"></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-
-            </div>
-            <div class="panel-body">
-
-            </div>
-        </div>
+        {% include 'elements/plug.html' %}
     </div>
 {% endblock %}
