@@ -1,81 +1,35 @@
-{% extends "base.html" %}
+{% extends "elements/base.html" %}
 {% block body %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div class = "container">
-<div class = "panel panel-primary">
-   <div class = "panel-heading">
-      <a style="color: #ffffff">
-        Who Is The Primary Owen?
-      </a>
-   </div>
 
-    
-   <div class = "panel-body">
-    
-<script>
-$(document).ready(function(){
+    <div class="container" style="padding-top: 15px">
+        <div class="card mb-3">
+            <h3 class="card-header">Primary Owen</h3>
+            <div class="card-body">
+                Primary Owen updates, coming soon!
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="card-header">
+                <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug">
+                    Advertisements by CSH: Plug
+                </a>
+            </h3>
+            <div class="card-body">
+                <div class="plug-body">
+                    <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug" style="color: #000000">
+                        <img style="width: 100%" src="https://plug.csh.rit.edu/data" alt="Advertisements by CSH: Plug">
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    $.get("/current_owen", function(data){
-        $("#current_owen").text(data.username.toUpperCase() + " IS THE PRIMARY OWEN");
-        $("#current_victory").text(data.victory);
-        $("#owen_image").attr("src","https://profiles.csh.rit.edu/image/"+data.username)
-        $("#owen_submitter").text(data.submitter.toUpperCase() + "submitted this Owen.");
-    });
-    });
+        <div class="panel panel-primary">
+            <div class="panel-heading">
 
-</script>
+            </div>
+            <div class="panel-body">
 
-<center> 
-    <img alt="Primary Owen Photo" id="owen_image">
-    
-      <div class = "winner-body">
-      <div class = "col-md-auto">
-         <h1>
-            <center>
-            <p id="current_owen"></p>
-            </center>
-         </h1>
-		 <center>
-		 <p id="owen_submitter"> </p>
-		 </center>
-         <center>
-         <p id="current_victory"> </p>
-         </center>
-         </a>
-      </div>
-      </div>
-   </div>
-</div>
-
-   <div class = "panel panel-primary">
-      <div class = "panel-heading" style="color: #ffffff">
-           Submit a Change
-      </div>
-      <div class = "panel-body">
-        <center>
-         <a href="/submission">
-            <h1>
-            Submit a change in the Primary Owen
-            </h1>
-         </a>
-        </center>
-      </div>
+            </div>
+        </div>
     </div>
-   <div class="panel panel-primary">
-      <div class="panel-heading">
-         <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug" style="color: #ffffff">
-         Advertisements by CSH: Plug
-         </a>
-      </div>
-      <div class="panel-body">
-         <center>
-         <div class="plug-body">
-            <a href="https://plug.csh.rit.edu" title="Advertisements by CSH: Plug" style="color: #000000" >
-            <img style="width: 100%" src="https://plug.csh.rit.edu/data" alt="Advertisements by CSH: Plug">
-            </a>
-         </div>
-         <center>
-      </div>
-   </div>
-</div>
 {% endblock %}
