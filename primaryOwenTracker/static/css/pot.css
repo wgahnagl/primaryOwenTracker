@@ -1,4 +1,28 @@
+.owen_image{
+    max-width: 150px;
+}
+.versus{
+    padding-top: 20px;
+    max-height: 90px;
+    max-width: 70px;
+    height: 80%;
+    width: 50%;
+}
+.tug_green{
+    margin-top: 30px;
+    height: 20px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: limegreen;
 
+}
+.tug_blue{
+    height: 20px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: deepskyblue;
+    position:absolute;
+}
 .ratio {
     background-position: center center;
     background-repeat: no-repeat;
